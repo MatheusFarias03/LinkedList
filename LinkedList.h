@@ -15,8 +15,8 @@ public:
 	int RemoveHead();
 	int RemoveTail();
 	int RemoveNode(int elem);
-	Node GetHead(); // GetFront(list)
-	Node GetTail(); // GetBack(list)
+	Node GetHead(); 
+	Node GetTail(); 
 	Node GetNode();
 	int Count();
 	bool IsEmpty();
@@ -34,10 +34,9 @@ class Node
 {
 public:
 	Node();
-	~Node();
-
-	void SetData();
-	int GetData();
+	void SetData(int elem);
+	Node* GetData();
+	void SetNext(Node& next);
 
 private:
 	int data;
