@@ -11,7 +11,7 @@ LinkedList::LinkedList()
 
 void LinkedList::Destroy()
 {
-
+	// loop delete para apagar toda a lista
 };
 
 void LinkedList::Insert(int elem) // Insere no comeco da lista
@@ -55,32 +55,48 @@ void LinkedList::Append(int elem) // Insere no final da lista
 
 int LinkedList::RemoveHead()
 {
-
+	delete
 };
 
 int LinkedList::RemoveTail()
 {
-
+	
 };
 
 int LinkedList::RemoveNode(int elem)
 {
-
+	
 };
 
 Node LinkedList::GetHead() 
 {
-
+	// pega o data do head e retorna esse valor
+	return head;
 };
 
 Node LinkedList::GetTail() 
 {
-
+	return tail;
 };
 
-Node LinkedList::GetNode()
+Node LinkedList::GetNode(int elem)
 {
-
+	Node* previous = head;
+	Node* current = head;	
+	
+	while(current->next != nullptr && current.data != elem){
+		previous = current;
+		current = current -> next;
+	}
+	
+	int foundElem = current.data;
+	if(current.data = elem){
+		return previous;
+	}
+	else{
+		std::cout << "Element not found!";
+		return nullptr;
+	}
 };
 
 int LinkedList::Count()
@@ -95,7 +111,7 @@ bool LinkedList::IsEmpty()
 
 void LinkedList::Clear()
 {
-
+	// loop delete para apagar todos os dados dos nos
 };
 
 void LinkedList::CreateNode()
@@ -105,7 +121,7 @@ void LinkedList::CreateNode()
 
 void LinkedList::DestroyNode()
 {
-
+	delete node;
 };
 
 Node::Node()
@@ -120,7 +136,7 @@ void Node::SetData(int elem)
 	data = elem;
 };
 
-Node* Node::GetData()
+Node* Node::GetNext()
 {
 	Node* aux = next;
 	return aux;
