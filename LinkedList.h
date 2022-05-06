@@ -20,7 +20,7 @@ public:
 
 private:
 	int data;
-	Node* next = nullptr; 
+	Node* next; 
 };
 
 
