@@ -6,4 +6,4 @@ Um nó tem dois componentes: seu valor e um ponteiro para o próximo nó
 
 # Exemplo de Lista Ligada
 
-
+![Exemplo de Lista Ligada](https://github.com/MatheusFarias03/LinkedList/blob/main/LinkedListExample.jpg?raw=true)
