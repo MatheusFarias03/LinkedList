@@ -3,12 +3,18 @@
 #include <clocale>
 #include "LinkedList.h"
 
-void Print(LinkedList& list)
+LinkedList list;
+
+void LinkedList::Print()
 {
-	// TODO: Implementar:
-	// Percorre todos os nós da lista e imprime os valores de cada nó.
+	Node* aux = head;
+	while (aux->GetNext() != nullptr)
+	{
+		std::cout << aux->GetData() << "  ";
+		aux->GetNext();
+	}
 }
-void PrintListInfo(LinkedList& list)
+void LinkedList::PrintListInfo()
 {
 	if (list.IsEmpty())
 	{
@@ -17,7 +23,7 @@ void PrintListInfo(LinkedList& list)
 	else
 	{
 		std::cout << "Lista: ";
-		Print(list);
+		Print();
 	}
 }
 
@@ -27,16 +33,16 @@ int main()
 
 	setlocale(LC_CTYPE, "Portuguese");
 	std::cout << "*** Lista Ligada/Encadeada (Linked List) ***\n";
-	PrintListInfo(list);
+	list.PrintListInfo();
 	list.Insert(1);
 	list.Insert(2);
 	list.Insert(3);
 	list.Append(4);
 	list.Append(5);
 	list.Append(6);
-	PrintListInfo(list);
+	list.PrintListInfo();
 	list.Clear();
-	PrintListInfo(list);
+	list.PrintListInfo();
 	list.Insert(77);
 	list.Append(88);
 	list.Insert(99);
@@ -44,19 +50,19 @@ int main()
 	list.Insert(2);
 	list.Append(1);
 	list.Insert(0);
-	PrintListInfo(list);
+	list.PrintListInfo();
 	int removed = list.RemoveNode(3);
 	std::cout << "Nó removido: " << removed << '\n';
 	// TODO: Liberar memória alocada para o nó que foi removido.
-	PrintListInfo(list);
+	list.PrintListInfo();
 	removed = list.RemoveHead();
 	std::cout << "Nó removido: " << removed << '\n';
 	// TODO: Liberar memória alocada para o nó que foi removido.
-	PrintListInfo(list);
+	list.PrintListInfo();
 	removed = list.RemoveTail();
 	std::cout << "Nó removido: " << removed << '\n';
 	// TODO: Liberar memória alocada para o nó que foi removido.
-	PrintListInfo(list);
+	list.PrintListInfo();
 	// TODO: Liberar memória alocada para a lista.
 	std::cout << "Fim.\n";
 }
