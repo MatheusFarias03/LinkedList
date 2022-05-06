@@ -1,47 +1,63 @@
-// Leonardo Pinheiro de Souza - 32127391
-// Matheus Farias de Oliveira Matsumoto - 32138271
+/*	Leonardo Pinheiro de Souza - 32127391
+	Matheus Farias de Oliveira Matsumoto - 32138271
+	Código em Inglês
+	Comentários em Portugês-BR
+*/
 
 #ifndef __H_LINKED_LIST__
 #define __H_LINKED_LIST__
-#include <iostream>
 
-class LinkedList 
-{
-public:
-	LinkedList();
-	~LinkedList();
-	void Insert(int elem); // AddFront(list, elem)
-	void Append(int elem); // AddBack(list, elem)
-	int RemoveHead();
-	int RemoveTail();
-	int RemoveNode(int elem);
-	int* GetHead();
-	int* GetTail();
-	int* GetNode(int elem);
-	int Count();
-	bool IsEmpty();
-	void Clear();
-
-private:
-	int count;
-	int* head;
-	int* tail;
-};
-
-class Node 
-{
+class Node {
 public:
 	Node();
 	~Node();
-	void SetData(int elem);
-	int* GetNext();
-	void SetNext(int* const value);
+
+	void SetData(int data);
 	int GetData();
+
+	void SetNext(Node* const value);
+	Node* GetNext();
 
 private:
 	int data;
-	int* next;
+	Node* next;
 };
 
-#endif
-#pragma once
+
+class LinkedList {
+public:
+	LinkedList();
+	~LinkedList();
+
+	void Insert(int elem);
+	void Append(int elem);
+
+	int RemoveHead();
+	int RemoveTail();
+	int RemoveNode(int elem);
+
+	Node* GetHead();
+	Node* GetTail();
+	Node* GetNode(int elem);
+
+	int Count();
+	void Clear();
+	bool IsEmpty();
+
+	void Print();
+	void PrintListInfo();
+
+private:
+	int count;
+	Node* head;
+	Node* tail;
+
+};
+
+#include <iostream>
+
+#endif // !__H_LINKED_LIST__
+
+/* Referências:
+*				https://newbedev.com/c-initial-value-of-reference-to-non-const-must-be-an-lvalue#:~:text=C%2B%2B%20initial%20value%20of%20reference%20to%20non-const%20must,To%20fix%20this%20error%2C%20either%20declare%20x%20constant
+*/
