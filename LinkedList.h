@@ -1,7 +1,7 @@
 /*	Leonardo Pinheiro de Souza - 32127391
 	Matheus Farias de Oliveira Matsumoto - 32138271
-	CÃ³digo em InglÃªs
-	ComentÃ¡rios em PortugÃªs-BR
+	Código em Inglês
+	Comentários em Portugês-BR
 */
 
 #ifndef __H_LINKED_LIST__
@@ -11,8 +11,6 @@ class Node {
 public:
 	Node();
 	~Node();
-
-	void DestroyNode();
 
 	void SetData(int data);
 	int GetData();
@@ -43,6 +41,7 @@ public:
 	Node* GetNode(int elem);
 
 	int Count();
+	void Clear();
 	bool isEmpty();
 
 private:
@@ -56,6 +55,6 @@ private:
 
 #endif // !__H_LINKED_LIST__
 
-/* ReferÃªncias: 
+/* Referências: 
 *				https://newbedev.com/c-initial-value-of-reference-to-non-const-must-be-an-lvalue#:~:text=C%2B%2B%20initial%20value%20of%20reference%20to%20non-const%20must,To%20fix%20this%20error%2C%20either%20declare%20x%20constant
 */
