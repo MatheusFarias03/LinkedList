@@ -9,38 +9,38 @@ class LinkedList
 {
 public:
 	LinkedList();
-	void Destroy();
+	~LinkedList();
 	void Insert(int elem); // AddFront(list, elem)
 	void Append(int elem); // AddBack(list, elem)
 	int RemoveHead();
 	int RemoveTail();
 	int RemoveNode(int elem);
-	Node GetHead(); 
-	Node GetTail(); 
-	Node GetNode(int elem);
+	int* GetHead();
+	int* GetTail();
+	int* GetNode(int elem);
 	int Count();
 	bool IsEmpty();
 	void Clear();
-	void CreateNode();
-	void DestroyNode();
 
 private:
 	int count;
-	Node* head;
-	Node* tail;
+	int* head;
+	int* tail;
 };
 
 class Node 
 {
 public:
 	Node();
+	~Node();
 	void SetData(int elem);
-	void SetNext(Node& next);
-	Node* GetNext();
+	int* GetNext();
+	void SetNext(int* const value);
+	int GetData();
 
 private:
 	int data;
-	Node* next;
+	int* next;
 };
 
 #endif

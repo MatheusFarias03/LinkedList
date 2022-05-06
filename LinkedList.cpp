@@ -1,100 +1,161 @@
 #include "LinkedList.h"
 
-
 LinkedList::LinkedList()
 	: count(0),
 	head(nullptr),
 	tail(nullptr)
 {
-
-};
-
-void LinkedList::Destroy()
-{
-	// loop delete para apagar toda a lista
 };
 
 void LinkedList::Insert(int elem) // Insere no comeco da lista
 {
-	Node ObjNode;
-	Node* pObjNode = &ObjNode;
+	int ObjNode;
+	int* pObjNode = &ObjNode;
 
 	ObjNode.SetData(elem);
 
-	LinkedList::count++;
-	LinkedList::head = pObjNode;
+	count++;
+	head = pObjNode;
 
-	if (LinkedList::head == nullptr) 
+	if (head == nullptr)
 	{
-		LinkedList::head = pObjNode;
+		head = pObjNode;
 	}
 	else 
 	{
-		ObjNode.SetNext(*LinkedList::head);
-		LinkedList::head = pObjNode;
+		ObjNode.SetNext(head);
+		head = pObjNode;
 	}
 };
 
 void LinkedList::Append(int elem) // Insere no final da lista
 {
-	Node ObjNode;
-	Node* pObjNode = &ObjNode;
+	int ObjNode;
+	int* pObjNode = &ObjNode;
 
 	ObjNode.SetData(elem);
+	count++;
 
-	LinkedList::count++;
-	LinkedList::tail = pObjNode;
+	int* previous = nullptr;
+	int* current = head;
 
-	Node* aux = head;
-	while (aux != nullptr)
-	{
-		aux = ObjNode.GetData();
-		aux = &ObjNode;
+	while (current != nullptr) {
+		previous = current;
+		current = current->GetNext();
 	}
+
+	current = nullptr;
+	previous->SetNext(pObjNode);
+	tail = pObjNode;
+	previous = nullptr;
+	pObjNode = nullptr;
 };
 
 int LinkedList::RemoveHead()
 {
-	delete
+	int ObjNode;
+	int* aux = head;
+	if (head != tail)
+	{
+		count--;
+		head = ObjNode.GetNext();
+		return aux->GetData();
+	}
+	else
+	{
+		count--;
+		head = nullptr;
+		return aux->GetData();
+	}
 };
 
 int LinkedList::RemoveTail()
 {
+	int* aux = head;
+
+	if (head == tail)
+	{
+		count--;
+		RemoveHead();
+	}
+	else 
+	{
+		while (aux != tail)
+			{
+				aux = aux->GetNext();
+				if (aux->GetNext() == tail)
+				{
+					tail = aux;
+					count--;
+					aux = aux->GetNext();
+					tail->SetNext(nullptr);
+					return aux->GetData();
+				}
+			}
+	}
 	
 };
 
 int LinkedList::RemoveNode(int elem)
 {
-	
+	int* previous = nullptr;
+	int* current = head;
+
+	while (current != nullptr && current->GetData() != elem)
+	{
+		previous = current;
+		current = current->GetNext();
+	}
+	if (current == nullptr)
+	{
+		return NULL;
+	}
+	else if (current == head)
+	{
+		RemoveHead();
+	}
+	else if (current == tail)
+	{
+		RemoveTail();
+	}
+	else
+	{
+		int* aux = current->GetNext();
+		previous->SetNext(aux);
+		count--;
+		current->SetNext(nullptr);
+		return current->GetData();
+	}
 };
 
-Node LinkedList::GetHead() 
+int* LinkedList::GetHead()
 {
-	// pega o data do head e retorna esse valor
 	return head;
 };
 
-Node LinkedList::GetTail() 
+int* LinkedList::GetTail()
 {
 	return tail;
 };
 
-Node LinkedList::GetNode(int elem)
+int* LinkedList::GetNode(int elem)
 {
-	Node* previous = head;
-	Node* current = head;	
-	
-	while(current->next != nullptr && current.data != elem){
+	int* previous = head;
+	int* current = head;
+
+	while (current->GetNext() != nullptr && current->GetData() != elem) {
 		previous = current;
-		current = current -> next;
+		current = current->GetNext();
 	}
-	
-	int foundElem = current.data;
-	if(current.data = elem){
+
+	int foundElem = current->GetData();
+	if (current->GetData() == elem) 
+	{
 		return previous;
 	}
-	else{
-		std::cout << "Element not found!";
+	else 
+	{
+		// std::cout << "Element not found!";
 		return nullptr;
 	}
 };
@@ -111,17 +172,18 @@ bool LinkedList::IsEmpty()
 
 void LinkedList::Clear()
 {
-	// loop delete para apagar todos os dados dos nos
-};
+	int* previous = head;
+	int* current = nullptr;
 
-void LinkedList::CreateNode()
-{
-	Node* node = new Node();
-};
-
-void LinkedList::DestroyNode()
-{
-	delete node;
+	while (previous != NULL)
+	{
+		current->SetNext(previous->GetNext());
+		delete previous;
+		previous->SetNext(current);
+	}
+	head = nullptr;
+	tail = nullptr;
+	count = 0;
 };
 
 Node::Node()
@@ -136,13 +198,17 @@ void Node::SetData(int elem)
 	data = elem;
 };
 
-Node* Node::GetNext()
+int Node::GetData()
 {
-	Node* aux = next;
-	return aux;
+	return data;
+}
+
+int* Node::GetNext()
+{
+	return next;
 };
 
-void Node::SetNext(Node& value)
+void Node::SetNext(int* const value)
 {
-	Node* next = &value;
+	int* next = value;
 };
