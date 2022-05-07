@@ -1,56 +1,18 @@
-// main.cpp
+/*	Leonardo Pinheiro de Souza - 32127391
+    Matheus Farias de Oliveira Matsumoto - 32138271
+    Código em Inglês
+    Comentários em Portugês-BR
+*/
+
 #include <iostream>
-#include <clocale>
-#include "LinkedList.h"
-using namespace std;
+#include "LinkedListSimple.h"
 
-void Print(LinkedList& list)
+int main()
 {
-	// TODO: Implementar:
-	// Percorre todos os n�s da lista e imprime os valores de cada n�.
-
-	Node* previous = list.GetHead();
-	Node* current = list.GetHead();
-
-	while (current->GetNext() != nullptr) {
-		std::cout << previous->GetData() << " ";
-		previous = current;
-		current = current->GetNext();
-	}
-
-	previous = nullptr;
-	current = nullptr;
-
-}
-void PrintListInfo(LinkedList& list)
-{
-	if (list.isEmpty())
-	{
-		cout << "Lista vazia!\n";
-	}
-	else
-	{
-		cout << "Lista: ";
-		Print(list);
-	}
-}
-
-int main() {
-
-	LinkedList list;
-	PrintListInfo(list);
-	std::cout << "\nLista vazia.";
-	std::cout << "\nHead da lista : " << list.GetHead();
-	std::cout << "\nTail da lista : " << list.GetTail();
-	list.Insert(1);
-	std::cout << "\n\nAdicionado elemento (1).";
-	std::cout << "\nHead da lista : " << list.GetHead();
-	std::cout << "\nTail da lista : " << list.GetTail();
-	list.Insert(2);
-	std::cout << "\n\nAdicionado elemento (2).";
-	std::cout << "\nHead da lista : " << list.GetHead();
-	std::cout << "\nTail da lista : " << list.GetTail();
-
-
-	return 0;
+    LinkedList list;
+    list.Append(1);
+    list.Insert(3);
+    std::cout << "Head : " << list.GetHead()->data;
+    std::cout << "\nTail : " << list.GetTail()->data;
+    list.Clear();
 }
