@@ -4,7 +4,7 @@
 	Comentários em Portugês-BR
 */
 
-#include "LinkedList.h"
+#include "LinkedListSimple.h"
 #include<iostream>
 
 // Funções do Node
@@ -143,13 +143,12 @@ bool LinkedList::isEmpty() {
 }
 
 void LinkedList::Clear() {
-	Node* node = head;
 	Node* next = nullptr;
 
-	while (node != nullptr) {
-		next = node->next;
-		delete node; // Parte importante para liberar espaço na memória
-		node = next;
+	while (head != nullptr) {
+		next = head->next;
+		delete head; // Parte importante para liberar espaço na memória
+		head = next;
 	}
 
 	head, tail = nullptr;
