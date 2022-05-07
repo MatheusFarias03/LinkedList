@@ -1,31 +1,37 @@
+/*	Leonardo Pinheiro de Souza - 32127391
+    Matheus Farias de Oliveira Matsumoto - 32138271
+    Código em Inglês
+    Comentários em Portugês-BR
+*/
+
 // main.cpp
 #include <iostream>
 #include <clocale>
 #include "LinkedList.h"
 
-LinkedList list;
+using namespace std;
+void Print(LinkedList& list)
+{
+    Node* current = list.GetHead();
+    cout << "\nElementos da lista : ";
+    while (current != nullptr) {
+        cout << current->data << " ";
+        current = current->next;
+    }
+}
+void PrintListInfo(LinkedList list)
+{
+    if (list.IsEmpty() == true)
+    {
+        cout << "\nLista vazia!\n";
+    }
+    else
+    {
+        cout << "\nLista: ";
+        Print(list);
+    }
+}
 
-void LinkedList::Print()
-{
-	Node* aux = head;
-	while (aux->GetNext() != nullptr)
-	{
-		std::cout << aux->GetData() << "  ";
-		aux->GetNext();
-	}
-}
-void LinkedList::PrintListInfo()
-{
-	if (list.IsEmpty())
-	{
-		std::cout << "Lista vazia!\n";
-	}
-	else
-	{
-		std::cout << "Lista: ";
-		Print();
-	}
-}
 
 int main()
 {
@@ -33,16 +39,16 @@ int main()
 
 	setlocale(LC_CTYPE, "Portuguese");
 	std::cout << "*** Lista Ligada/Encadeada (Linked List) ***\n";
-	list.PrintListInfo();
+	PrintListInfo(list);
 	list.Insert(1);
 	list.Insert(2);
 	list.Insert(3);
 	list.Append(4);
 	list.Append(5);
 	list.Append(6);
-	list.PrintListInfo();
+	PrintListInfo(list);
 	list.Clear();
-	list.PrintListInfo();
+	PrintListInfo(list);
 	list.Insert(77);
 	list.Append(88);
 	list.Insert(99);
@@ -50,19 +56,15 @@ int main()
 	list.Insert(2);
 	list.Append(1);
 	list.Insert(0);
-	list.PrintListInfo();
-	int removed = list.RemoveNode(3);
-	std::cout << "Nó removido: " << removed << '\n';
-	// TODO: Liberar memória alocada para o nó que foi removido.
-	list.PrintListInfo();
+	PrintListInfo(list);
+	Node* removed = list.RemoveNode(3);
+	std::cout << "\nNó removido: " << removed << '\n';
+	PrintListInfo(list);
 	removed = list.RemoveHead();
-	std::cout << "Nó removido: " << removed << '\n';
-	// TODO: Liberar memória alocada para o nó que foi removido.
-	list.PrintListInfo();
+	std::cout << "\nNó removido: " << removed << '\n';
+	PrintListInfo(list);
 	removed = list.RemoveTail();
-	std::cout << "Nó removido: " << removed << '\n';
-	// TODO: Liberar memória alocada para o nó que foi removido.
-	list.PrintListInfo();
-	// TODO: Liberar memória alocada para a lista.
+	std::cout << "\nNó removido: " << removed << '\n';
+	PrintListInfo(list);
 	std::cout << "Fim.\n";
 }
