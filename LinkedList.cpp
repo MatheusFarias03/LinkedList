@@ -27,7 +27,7 @@ void LinkedList::Insert(int elem) {
 	node->data = elem;
 	node->next = head;
 
-	if (isEmpty()) 
+	if (isEmpty() == true) 
 		tail = node;
 
 	head = node;
@@ -40,7 +40,7 @@ void LinkedList::Append(int elem) {
 	node->data = elem;
 	node->next = nullptr;
 
-	if (isEmpty())
+	if (isEmpty() == true) 
 		head = node;
 	else
 		tail->next = node;
@@ -51,7 +51,7 @@ void LinkedList::Append(int elem) {
 
 Node* LinkedList::RemoveHead() {
 
-	if (isEmpty()) 
+	if (isEmpty() == true) 
 		return nullptr;
 
 	Node* toRemove = head;
