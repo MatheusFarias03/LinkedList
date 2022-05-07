@@ -1,19 +1,19 @@
 /*	Leonardo Pinheiro de Souza - 32127391
     Matheus Farias de Oliveira Matsumoto - 32138271
-    Código em Inglês
-    Comentários em Portugês-BR
+    CÃ³digo em InglÃªs
+    ComentÃ¡rios em PortugÃªs-BR
 */
 
 // main.cpp
 #include <iostream>
 #include <clocale>
-#include "LinkedListSimple.h"
+#include "LinkedList.h"
 
 using namespace std;
 void Print(LinkedList& list)
 {
     // TODO: Implementar:
-    // Percorre todos os nós da lista e imprime os valores de cada nó.
+    // Percorre todos os nÃ³s da lista e imprime os valores de cada nÃ³.
     Node* current = list.GetHead();
     cout << "\nElementos da lista : ";
     while (current != nullptr) {
