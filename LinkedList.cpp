@@ -4,7 +4,7 @@
 	Comentários em Portugês-BR
 */
 
-#include "LinkedListSimple.h"
+#include "LinkedList.h"
 #include<iostream>
 
 // Funções do Node
