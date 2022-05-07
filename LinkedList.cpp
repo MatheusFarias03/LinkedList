@@ -1,190 +1,156 @@
+/*	Leonardo Pinheiro de Souza - 32127391
+	Matheus Farias de Oliveira Matsumoto - 32138271
+	Código em Inglês
+	Comentários em Portugês-BR
+*/
+
 #include "LinkedList.h"
-#include <iostream>
+#include<iostream>
 
 // Funções do Node
-
 Node::Node()
 	:data(0), next(nullptr) {}
 
 Node::~Node() {}
 
-void Node::SetData(int elem) {
-	int data = elem;
-}
 
-int Node::GetData() {
-	return data;
-}
-
-void Node::SetNext(Node* value) {
-	next = value;
-}
-
-Node* Node::GetNext() {
-	return next;
-}
 
 // Funções da LinkedList
-
 LinkedList::LinkedList()
-	:count(0), head(nullptr), tail(nullptr) {}
+	: count(0), head(nullptr), tail(nullptr) {}
 
 LinkedList::~LinkedList() {}
 
 void LinkedList::Insert(int elem) {
 
-	Node ObjNode;
-	ObjNode.SetData(elem);
-	ObjNode.SetNext(head);
+	Node* node = new Node();
+	node->data = elem;
+	node->next = head;
 
-	if (head == nullptr) {
-		tail = &ObjNode;
-	}
-	head = &ObjNode;
+	if (IsEmpty() == true)
+		tail = node;
+
+	head = node;
 	count++;
 }
 
-void LinkedList::Append(int elem)
-{
-	Node ObjNode;
-	ObjNode.SetData(elem);
-	ObjNode.SetNext(nullptr);
+void LinkedList::Append(int elem) {
 
-	if (IsEmpty()) {
-		head;
-	}
-	else {
-		tail->SetNext(&ObjNode);
-	}
-	tail = &ObjNode;
+	Node* node = new Node();
+	node->data = elem;
+	node->next = nullptr;
+
+	if (IsEmpty() == true)
+		head = node;
+	else
+		tail->next = node;
+
+	tail = node;
 	count++;
-};
-
-int LinkedList::RemoveHead() {
-
-	if (head == nullptr && tail == nullptr) {
-		return NULL;
-	}
-	else {
-		int toRemove = head->GetData();
-		if (head == tail) {
-			head = nullptr;
-			tail = nullptr;
-		}
-		else {
-			Node* headNext = head->GetNext();
-			head->SetNext(nullptr);
-			head = headNext;
-			headNext = nullptr;
-		}
-		count--;
-		return toRemove;
-	}
 }
 
-int LinkedList::RemoveTail() {
+Node* LinkedList::RemoveHead() {
 
-	if (head == nullptr && tail == nullptr) {
-		return NULL;
-	}
-	else {
-		if (head == tail) {
-			return RemoveHead();
-		}
-		else {
+	if (IsEmpty() == true)
+		return nullptr;
 
-			Node* previous = head;
-			Node* current = head;
+	Node* toRemove = head;
 
-			while (current->GetNext() != nullptr) {
-				previous = current;
-				current = current->GetNext();
-			}
+	if (head == tail)
+		head, tail = nullptr;
+	else
+		head = head->next;
 
-			tail = previous;
-			previous->SetNext(nullptr);
-			int toRemove = current->GetData();
-			previous = nullptr;
-			current = nullptr;
-			count--;
-			return toRemove;
-		}
-	}
+	count--;
+	toRemove->next = nullptr;
+	return toRemove;
 }
 
-int LinkedList::RemoveNode(int elem) {
+Node* LinkedList::RemoveTail() {
+
+	if (head == tail)
+		return RemoveHead();
 
 	Node* toRemove = head;
 	Node* previous = nullptr;
 
-	while (toRemove != nullptr && toRemove->GetData() != elem) {
+	while (toRemove != tail)
+	{
 		previous = toRemove;
-		toRemove = toRemove->GetNext();
+		toRemove = toRemove->next;
 	}
 
-	if (toRemove == nullptr) {
-		return NULL;
-	}
-	else if (toRemove == head) {
-		return RemoveHead();
-	}
-	else if (toRemove == tail) {
-		return RemoveTail();
-	}
-	else {
-		previous->SetNext(toRemove->GetNext());
-		count--;
-		toRemove->SetNext(nullptr);
-		return toRemove->GetData();
-	}
-
+	previous->next = nullptr;
+	tail = previous;
+	count--;
+	toRemove->next = nullptr;
+	return toRemove;
 }
 
-Node* LinkedList::GetHead() {
-	return head;
-};
+Node* LinkedList::RemoveNode(int elem) {
 
-Node* LinkedList::GetTail() {
-	return tail;
+	Node* toRemove = head;
+	Node* previous = nullptr;
+
+	while (toRemove != nullptr && toRemove->data != elem) {
+		previous = toRemove;
+		toRemove = toRemove->next;
+	}
+
+	if (toRemove == nullptr)
+		return nullptr;
+	else if (toRemove == head)
+		return RemoveHead();
+	else if (toRemove == tail)
+		return RemoveTail();
+	else {
+		previous->next = toRemove->next;
+		count--;
+		toRemove->next = nullptr;
+		return toRemove;
+	}
 }
 
 Node* LinkedList::GetNode(int elem) {
 
 	Node* node = head;
+
 	while (node != nullptr) {
-		if (node->GetData() == elem) {
+		if (node->data == elem)
 			return node;
-		}
-		node = node->GetNext();
+		node = node->next;
 	}
 	return nullptr;
+}
+
+Node* LinkedList::GetHead() {
+	return head;
+}
+
+Node* LinkedList::GetTail() {
+	return tail;
 }
 
 int LinkedList::Count() {
 	return count;
 }
 
-void LinkedList::Clear()
-{
-	Node* node = head;
+bool LinkedList::IsEmpty() {
+	if (head == nullptr)
+		return true;
+	else
+		false;
+}
+
+void LinkedList::Clear() {
 	Node* next = nullptr;
 
-	while (node != NULL) {
-		next->SetNext(node->GetNext());
-		delete node;
-		node->SetNext(next);
+	while (head != nullptr) {
+		next = head->next;
+		delete head; // Parte importante para liberar espaço na memória
+		head = next;
 	}
 
-	head = nullptr;
-	tail = nullptr;
+	head, tail = nullptr;
 	count = 0;
-};
-
-bool LinkedList::IsEmpty() {
-	if (head == nullptr) {
-		return true;
-	}
-	else {
-		return false;
-	}
 }

@@ -12,17 +12,9 @@ public:
 	Node();
 	~Node();
 
-	void SetData(int data);
-	int GetData();
-
-	void SetNext(Node* const value);
-	Node* GetNext();
-
-private:
 	int data;
 	Node* next;
 };
-
 
 class LinkedList {
 public:
@@ -32,9 +24,9 @@ public:
 	void Insert(int elem);
 	void Append(int elem);
 
-	int RemoveHead();
-	int RemoveTail();
-	int RemoveNode(int elem);
+	Node* RemoveHead();
+	Node* RemoveTail();
+	Node* RemoveNode(int elem);
 
 	Node* GetHead();
 	Node* GetTail();
@@ -44,20 +36,10 @@ public:
 	void Clear();
 	bool IsEmpty();
 
-	void Print();
-	void PrintListInfo();
-
 private:
 	int count;
 	Node* head;
 	Node* tail;
-
 };
 
-#include <iostream>
-
-#endif // !__H_LINKED_LIST__
-
-/* Referências:
-*				https://newbedev.com/c-initial-value-of-reference-to-non-const-must-be-an-lvalue#:~:text=C%2B%2B%20initial%20value%20of%20reference%20to%20non-const%20must,To%20fix%20this%20error%2C%20either%20declare%20x%20constant
-*/
+#endif 

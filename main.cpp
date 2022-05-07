@@ -2,6 +2,13 @@
     Matheus Farias de Oliveira Matsumoto - 32138271
     Código em Inglês
     Comentários em Portugês-BR
+
+	Referências:
+	https://www.youtube.com/watch?v=ScKTk5GwmG4&ab_channel=NesoAcademy
+	https://www.youtube.com/watch?v=HKfj0l7ndbc&t=939s
+	https://www.youtube.com/watch?v=m7rrk65GiXY&t=276s
+	https://docs.microsoft.com/pt-br/visualstudio/debugger/how-can-i-debug-an-access-violation-q?view=vs-2022
+	https://www.geeksforgeeks.org/program-to-implement-singly-linked-list-in-c-using-class/
 */
 
 // main.cpp
@@ -13,7 +20,6 @@ using namespace std;
 void Print(LinkedList& list)
 {
     Node* current = list.GetHead();
-    cout << "\nElementos da lista : ";
     while (current != nullptr) {
         cout << current->data << " ";
         current = current->next;
@@ -31,7 +37,6 @@ void PrintListInfo(LinkedList list)
         Print(list);
     }
 }
-
 
 int main()
 {
@@ -58,13 +63,13 @@ int main()
 	list.Insert(0);
 	PrintListInfo(list);
 	Node* removed = list.RemoveNode(3);
-	std::cout << "\nNó removido: " << removed << '\n';
+	std::cout << "\nNó removido: " << removed->data << '\n';
 	PrintListInfo(list);
 	removed = list.RemoveHead();
-	std::cout << "\nNó removido: " << removed << '\n';
+	std::cout << "\nNó removido: " << removed->data << '\n';
 	PrintListInfo(list);
 	removed = list.RemoveTail();
-	std::cout << "\nNó removido: " << removed << '\n';
+	std::cout << "\nNó removido: " << removed->data << '\n';
 	PrintListInfo(list);
-	std::cout << "Fim.\n";
+	std::cout << "\nFim.\n";
 }
