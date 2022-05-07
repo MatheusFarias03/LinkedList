@@ -1,9 +1,9 @@
 /*	Leonardo Pinheiro de Souza - 32127391
     Matheus Farias de Oliveira Matsumoto - 32138271
-    Código em Inglês
-    Comentários em Portugês-BR
+    CÃ³digo em InglÃªs
+    ComentÃ¡rios em PortugÃªs-BR
 
-	Referências:
+	ReferÃªncias:
 	https://www.youtube.com/watch?v=ScKTk5GwmG4&ab_channel=NesoAcademy
 	https://www.youtube.com/watch?v=HKfj0l7ndbc&t=939s
 	https://www.youtube.com/watch?v=m7rrk65GiXY&t=276s
@@ -63,13 +63,13 @@ int main()
 	list.Insert(0);
 	PrintListInfo(list);
 	Node* removed = list.RemoveNode(3);
-	std::cout << "\nNó removido: " << removed->data << '\n';
+	std::cout << "\nNÃ³ removido: " << removed->data << '\n';
 	PrintListInfo(list);
 	removed = list.RemoveHead();
-	std::cout << "\nNó removido: " << removed->data << '\n';
+	std::cout << "\nNÃ³ removido: " << removed->data << '\n';
 	PrintListInfo(list);
 	removed = list.RemoveTail();
-	std::cout << "\nNó removido: " << removed->data << '\n';
+	std::cout << "\nNÃ³ removido: " << removed->data << '\n';
 	PrintListInfo(list);
 	std::cout << "\nFim.\n";
 }
